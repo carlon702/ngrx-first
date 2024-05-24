@@ -1,13 +1,13 @@
-import {routerNavigationAction} from '@ngrx/router-store'
-import {createFeature, createReducer, on} from '@ngrx/store'
-import {ArticleStateInterface} from '../types/articleState.interface'
-import {articleActions} from './actions'
+import {routerNavigationAction} from '@ngrx/router-store';
+import {createFeature, createReducer, on} from '@ngrx/store';
+import {ArticleStateInterface} from '../types/articleState.interface';
+import {articleActions} from './actions';
 
 const initialState: ArticleStateInterface = {
   isLoading: false,
   error: null,
   data: null,
-}
+};
 
 const articleFeature = createFeature({
   name: 'article',
@@ -23,9 +23,9 @@ const articleFeature = createFeature({
       ...state,
       isLoading: false,
     })),
-    on(routerNavigationAction, () => initialState)
+    on(routerNavigationAction, () => initialState),
   ),
-})
+});
 
 export const {
   name: articleFeatureKey,
@@ -33,4 +33,4 @@ export const {
   selectIsLoading,
   selectError,
   selectData: selectArticleData,
-} = articleFeature
+} = articleFeature;

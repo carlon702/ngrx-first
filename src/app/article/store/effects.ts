@@ -1,11 +1,11 @@
 import {inject} from '@angular/core';
+import {Router} from '@angular/router';
 import {Actions, createEffect, ofType} from '@ngrx/effects';
 import {catchError, map, of, switchMap, tap} from 'rxjs';
 import {ArticleService as SharedArticleService} from 'src/app/shared/services/article.service';
 import {ArticleInterface} from 'src/app/shared/types/article.interface';
-import {articleActions} from './actions';
 import {ArticleService} from '../services/article.services';
-import {Router} from '@angular/router';
+import {articleActions} from './actions';
 
 export const getArticleEffect = createEffect(
   (
@@ -52,7 +52,9 @@ export const redirectAfterDeleteEffect = createEffect(
   (actions$ = inject(Actions), router = inject(Router)) => {
     return actions$.pipe(
       ofType(articleActions.deleteArticleSuccess),
-      tap(() => router.navigateByUrl('/')),
+      tap(() => {
+        router.navigateByUrl('/');
+      }),
     );
   },
   {functional: true, dispatch: false},
