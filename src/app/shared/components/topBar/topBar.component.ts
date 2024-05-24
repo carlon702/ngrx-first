@@ -9,12 +9,11 @@ import {selectCurrentUser} from 'src/app/auth/store/reducers';
   selector: 'mc-topbar',
   templateUrl: './topBar.component.html',
   standalone: true,
-  imports: [CommonModule, RouterLink],
+  imports: [RouterLink, CommonModule],
 })
 export class TopBarComponent {
   data$ = combineLatest({
     currentUser: this.store.select(selectCurrentUser),
   });
-
   constructor(private store: Store) {}
 }
