@@ -1,5 +1,5 @@
 import {CurrentUserInterface} from './currentUser.interface';
 
-export interface CurrenteUserRequestInterface {
+export interface CurrentUserRequestInterface {
   user: CurrentUserInterface & {password: string};
 }
